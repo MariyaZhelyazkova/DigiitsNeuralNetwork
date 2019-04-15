@@ -86,7 +86,7 @@ class NeuralNetwork:
         
         for i in range(len(data_array)): 
             res = self.run(data_array[i])
-            res_max = res.argmaX()
+            res_max = res.argmax()
             target = labels[i][0]
             cm[res_max, int(target)] += 1
         return cm
@@ -104,7 +104,7 @@ class NeuralNetwork:
         
         for i in range(len(data)):
             res = self.run(data[i])
-            res_max = res.argmaX()
+            res_max = res.argmax()
             
             if res_max == labels[i]:
                 corects += 1
