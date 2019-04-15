@@ -7,7 +7,9 @@ Created on Thu Apr  4 21:09:10 2019
 
 import pickle
 import numpy as np
+import matplotlib.pyplot as plt
 import NeuralNetworkClass
+import NNMultyLeyersClass
 
 with open("D:/Python/MNIST/pickled_mnist.pkl", "br") as fh:
     data = pickle.load(fh)
@@ -21,7 +23,23 @@ test_labels_one_hot = data[5]
 image_size = 28
 no_diff_lebels = 10
 image_pixel = image_size * image_size
-
+"""
+epochs = 3
+ANN_ml = NNMultyLeyersClass.NeuralNetwork(network_structure =[image_pixel, 100, 100, 10], 
+                                          learning_rate = 0.1,
+                                          bias = None)
+ANN_ml.train(train_images, train_labels_one_hot, epochs = epochs)
+for i in range(20):
+    res = ANN_ml.run(test_images[i])
+    image = test_images[i].reshape((28,28))
+    plt.imshow(image, cmap="Greys")
+    plt.show()
+    print(test_labels[i], np.argmax(res), np.max(res))
+    
+corrects, wrongs = ANN_ml.evaluate(train_images, train_labels)
+print("accruracy train: ", corrects / ( corrects + wrongs))
+corrects, wrongs = ANN_ml.evaluate(test_images, test_labels)
+print("accruracy: test", corrects / ( corrects + wrongs))"""
 
 ANN = NeuralNetworkClass.NeuralNetwork(num_in_nodes = image_pixel, 
                                        num_out_nodes = 10, 
@@ -35,7 +53,6 @@ for i in range(len(train_images)):
 
 print("Training Completed")
 
-import matplotlib.pyplot as plt
 
 for i in range(20):
     res = ANN.run(test_images[i])
@@ -43,3 +60,12 @@ for i in range(20):
     plt.imshow(image, cmap="Greys")
     plt.show()
     print(test_labels[i], np.argmax(res), np.max(res))
+    
+corrects, wrongs = ANN.evaluate(train_images, train_labels)
+print("accruracy train: ", corrects / ( corrects + wrongs))
+corrects, wrongs = ANN.evaluate(test_images, test_labels)
+print("accruracy: test", corrects / ( corrects + wrongs))
+cm = ANN.confusion_matrix(train_images, train_labels)
+print(cm)
+for i in range(10):
+    print("digit: ", i, "precision: ", ANN.precision(i, cm), "recall: ", ANN.recall(i, cm))
