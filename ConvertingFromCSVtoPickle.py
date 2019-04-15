@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- codi9ng: utf-8 -*-
 """
 Created on Thu Apr  4 21:39:30 2019
 
@@ -16,10 +16,10 @@ image_pixel = image_size * image_size
 train_data = np.loadtxt(filepath + "mnist_train.csv", delimiter = ",")
 test_data = np.loadtxt(filepath + "mnist_test.csv", delimiter = ",")
 
-fac = 255 * 0.99 + 0.1
+fac = 0.98 / 255
 
-train_images = np.asfarray(train_data[:,1:]) / fac
-test_images = np.asfarray(test_data[:,1:]) / fac
+train_images = np.asfarray(train_data[:,1:]) * fac + 0.01
+test_images = np.asfarray(test_data[:,1:]) * fac + 0.01
 
 train_labels = np.asfarray(train_data[:,:1])
 test_labels = np.asfarray(test_data[:,:1])
