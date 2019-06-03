@@ -4,8 +4,7 @@ import utils
 
 model = cnn_model.create_model()
 
-cnn_model.train_model(model, 'dataset/training_set', 'dataset/test_set')
-cnn_model.save_model(model, 'saved_models/checkpoint1')
+cnn_model.restore_model(model, 'saved_models/checkpoint1')
 
 test_images = utils.load_images_from_dir('dataset/test_images');
 
