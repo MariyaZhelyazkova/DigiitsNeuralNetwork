@@ -2,6 +2,7 @@ import numpy as np
 from PIL import Image
 from skimage import transform
 import os, os.path
+from time import gmtime, strftime
 
 def load_image(filename):
    return Image.open(filename)
@@ -20,3 +21,6 @@ def prepare_image(image):
    image = np.expand_dims(image, axis = 0)
    
    return image
+
+def get_current_date_time(format = '%Y_%m_%d_%H_%M_%S'):
+    return strftime(format, gmtime())
