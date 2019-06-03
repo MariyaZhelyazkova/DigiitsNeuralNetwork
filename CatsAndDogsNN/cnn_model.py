@@ -38,10 +38,10 @@ def train_model(model, train_data_path, validation_data_path):
                                                             class_mode = 'binary')
     
     model.fit_generator(training_set,
-                        steps_per_epoch = 100,
-                        epochs = 1,
+                        steps_per_epoch = 8000,
+                        epochs = 3,
                         validation_data = validation_set,
-                        validation_steps = 800,
+                        validation_steps = 2000,
                         workers = 8)
     
 def save_model(model, save_path):
