@@ -18,8 +18,8 @@ test_data = np.loadtxt(filepath + "mnist_test.csv", delimiter = ",")
 
 fac = 0.98 / 255
 
-train_images = np.asfarray(train_data[:,1:]) * fac + 0.01
-test_images = np.asfarray(test_data[:,1:]) * fac + 0.01
+train_images = np.asfarray(train_data[:,1:]) / 255
+test_images = np.asfarray(test_data[:,1:]) / 255
 
 train_labels = np.asfarray(train_data[:,:1])
 test_labels = np.asfarray(test_data[:,:1])
