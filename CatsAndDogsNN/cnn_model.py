@@ -16,7 +16,7 @@ def create_model():
     model.add(MaxPooling2D(pool_size = (2, 2)))
     model.add(Flatten())
     model.add(Dense(units = 256, activation = tf.nn.relu))
-    model.add(Dense(units = 2, activation = tf.nn.softmax))
+    model.add(Dense(units = 3, activation = tf.nn.softmax))
     
     model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
     
@@ -40,10 +40,10 @@ def train_model(model, train_data_path, validation_data_path):
                                                             class_mode = 'categorical')
 
     model.fit_generator(training_set,
-                        steps_per_epoch = 8000,
-                        epochs = 2,
+                        steps_per_epoch = 12000,
+                        epochs = 3,
                         validation_data = validation_set,
-                        validation_steps = 2000,
+                        validation_steps = 3000,
                         workers = 8)
 
 def save_model(model, save_path):

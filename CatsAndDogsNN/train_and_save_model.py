@@ -17,4 +17,4 @@ for image in test_images:
     result = model.predict(utils.prepare_image(image))   
     
     for i, label in enumerate(labels):
-        print('Species type %s - possibility = %f' % (label, result[0][i]))
+        print('Species type %s - possibility = %f' % (label, result[0][i]))        
