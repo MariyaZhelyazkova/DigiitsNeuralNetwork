@@ -41,7 +41,7 @@ def train_model(model, train_data_path, validation_data_path):
 
     model.fit_generator(training_set,
                         steps_per_epoch = 8000,
-                        epochs = 2,
+                        epochs = 3,
                         validation_data = validation_set,
                         validation_steps = 2000,
                         workers = 8)
